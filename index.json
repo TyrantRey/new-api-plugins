@@ -3145,6 +3145,206 @@
           "kind": "task"
         }
       ]
+    },
+    {
+      "key": "voyage",
+      "name": "Voyage AI",
+      "icon": "Voyage.Color",
+      "website": "https://www.voyageai.com",
+      "description": {
+        "en": "Voyage AI text embeddings, multimodal embeddings, and rerankers through Voyage's native API",
+        "zh": "通过 Voyage 原生接口调用 Voyage AI 文本向量、多模态向量与重排序模型"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/voyage/v1/embeddings",
+          "type": "submit",
+          "decode": "decodeEmbeddings",
+          "render": "renderResult",
+          "retainResult": false,
+          "models": [
+            "voyage-4-large",
+            "voyage-4",
+            "voyage-4-lite",
+            "voyage-code-4",
+            "voyage-finance-2",
+            "voyage-law-2",
+            "voyage-3-large",
+            "voyage-3.5",
+            "voyage-3.5-lite",
+            "voyage-code-3",
+            "voyage-3",
+            "voyage-3-lite",
+            "voyage-multilingual-2",
+            "voyage-large-2-instruct",
+            "voyage-large-2",
+            "voyage-code-2",
+            "voyage-2"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/voyage/v1/multimodalembeddings",
+          "type": "submit",
+          "decode": "decodeMultimodalEmbeddings",
+          "render": "renderResult",
+          "retainResult": false,
+          "models": [
+            "voyage-multimodal-3.5",
+            "voyage-multimodal-3"
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/voyage/v1/rerank",
+          "type": "submit",
+          "decode": "decodeRerank",
+          "render": "renderResult",
+          "retainResult": false,
+          "models": [
+            "rerank-3",
+            "rerank-3-lite",
+            "rerank-2.5",
+            "rerank-2.5-lite",
+            "rerank-2",
+            "rerank-2-lite",
+            "rerank-1",
+            "rerank-lite-1"
+          ]
+        }
+      ],
+      "usageSchema": {
+        "tokens": {
+          "type": "number",
+          "unit": "token",
+          "description": {
+            "en": "Token unit price",
+            "zh": "Token 单价"
+          }
+        }
+      },
+      "usageExamples": [
+        {
+          "label": "Embed · 100 texts × 500 tokens",
+          "facts": {
+            "tokens": 50000
+          }
+        }
+      ],
+      "usageProfiles": [
+        {
+          "models": [
+            "rerank-3",
+            "rerank-3-lite",
+            "rerank-2.5",
+            "rerank-2.5-lite",
+            "rerank-2",
+            "rerank-2-lite",
+            "rerank-1",
+            "rerank-lite-1"
+          ],
+          "schema": {
+            "tokens": {
+              "type": "number",
+              "unit": "token",
+              "description": {
+                "en": "Token unit price",
+                "zh": "Token 单价"
+              }
+            }
+          },
+          "examples": [
+            {
+              "label": "Rerank · 20-token query · 50 × 500-token docs",
+              "facts": {
+                "tokens": 26000
+              }
+            }
+          ]
+        },
+        {
+          "models": [
+            "voyage-multimodal-3.5",
+            "voyage-multimodal-3"
+          ],
+          "schema": {
+            "pixels": {
+              "type": "number",
+              "unit": "token",
+              "description": {
+                "en": "Image and video pixel unit price",
+                "zh": "图片与视频像素单价"
+              }
+            },
+            "text_tokens": {
+              "type": "number",
+              "unit": "token",
+              "description": {
+                "en": "Text token unit price",
+                "zh": "文本 token 单价"
+              }
+            }
+          },
+          "examples": [
+            {
+              "label": "1 image (1000 × 1000) · 100 text tokens",
+              "facts": {
+                "pixels": 1000000,
+                "text_tokens": 100
+              }
+            },
+            {
+              "label": "100 images · 2M pixels each",
+              "facts": {
+                "pixels": 200000000,
+                "text_tokens": 0
+              }
+            }
+          ]
+        }
+      ],
+      "models": [
+        "voyage-4-large",
+        "voyage-4",
+        "voyage-4-lite",
+        "voyage-code-4",
+        "voyage-finance-2",
+        "voyage-law-2",
+        "voyage-3-large",
+        "voyage-3.5",
+        "voyage-3.5-lite",
+        "voyage-code-3",
+        "voyage-3",
+        "voyage-3-lite",
+        "voyage-multilingual-2",
+        "voyage-large-2-instruct",
+        "voyage-large-2",
+        "voyage-code-2",
+        "voyage-2",
+        "voyage-multimodal-3.5",
+        "voyage-multimodal-3",
+        "rerank-3",
+        "rerank-3-lite",
+        "rerank-2.5",
+        "rerank-2.5-lite",
+        "rerank-2",
+        "rerank-2-lite",
+        "rerank-1",
+        "rerank-lite-1"
+      ],
+      "latest": "1.0.0",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "path": "plugins/tasks/voyage/1.0.0/plugin.js",
+          "sha256": "fabd8d1a1cec7aded2ba681556f95151cb836862f71bd54f4580b3cce251ebfa",
+          "minApiVersion": 1,
+          "kind": "task",
+          "baseUrl": "https://api.voyageai.com",
+          "auth": "api_key"
+        }
+      ]
     }
   ]
 }
