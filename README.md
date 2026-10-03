@@ -1,4 +1,4 @@
-# New API Official Plugins
+# New API Unofficial Plugins
 
 Unofficial task-plugin marketplace for [new-api](https://github.com/QuantumNous/new-api). Each plugin is a single self-contained JavaScript module consumed by the new-api JS task-plugin runtime.
 
